@@ -4,7 +4,9 @@ import os
 import aws_cdk as cdk
 
 from training_sprint_1.training_sprint_1_stack import TrainingSprint1Stack
+
 app = cdk.App()
+
 cdk.Tags.of(app).add("cohort", "Eagle")
 cdk.Tags.of(app).add("name", "Qazi_Adan_Hidayat")
 
