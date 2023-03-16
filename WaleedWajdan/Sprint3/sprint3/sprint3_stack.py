@@ -17,7 +17,7 @@ from resources import constants as constants
 
 crontim = 20
 
-class Sprint2Stack(Stack):
+class Sprint3Stack(Stack):
     # Crontim in seconds
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
