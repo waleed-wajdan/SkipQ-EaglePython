@@ -14,10 +14,12 @@ class WaleedWajdanPipelineStack(Stack):
                                                        authentication= cdk.SecretValue.secrets_manager("Amazon1"),
                                                        trigger = actions_.GitHubTrigger('POLL')
                                                     )
-        synth = pipelines_.ShellStep('WaleedWajdanPipelineStackShellStepSynthID', commands = ['cd WaleedWajdan/Sprint3/',
-                                                                                       'npm install -g aws-cdk',
-                                                                                       'pip install -r requirements.txt',
-                                                                                       'cdk synth'],
-                                                                primary_output_directory = 'WaleedWajdan/Sprint3/cdk.out')
+        synth = pipelines_.ShellStep('WaleedWajdanPipelineStackShellStepSynthID', 
+                                     input = source,                        
+                                    commands = ['cd WaleedWajdan/Sprint3/',
+                                    'npm install -g aws-cdk',
+                                    'pip install -r requirements.txt',
+                                    'cdk synth'],
+                                    primary_output_directory = 'WaleedWajdan/Sprint3/cdk.out')
         
         pipeline = pipelines_.CodePipeline(self, 'WaleedWajdanSprint3PipelineStackShellStepPipelineID', synth = synth)
