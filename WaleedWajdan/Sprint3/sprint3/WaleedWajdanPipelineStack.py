@@ -11,7 +11,7 @@ class WaleedWajdanPipelineStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         source = pipelines_.CodePipelineSource.git_hub('waleed12022skipq/EaglePython','main', 
-                                                       authentication= cdk.SecretValue.secrets_manager("Amazon1"),
+                                                       authentication= cdk.SecretValue.secrets_manager("AmazonGithub1"),
                                                        trigger = actions_.GitHubTrigger('POLL')
                                                     )
         synth = pipelines_.ShellStep('WaleedWajdanPipelineStackShellStepSynthID', 
