@@ -6,6 +6,8 @@ from aws_cdk import (
 )
 from constructs import Construct
 
+from sprint3.WaleedWajdanStage import WaleedWajdanSprint3Stage
+
 class WaleedWajdanPipelineStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -23,3 +25,9 @@ class WaleedWajdanPipelineStack(Stack):
                                     primary_output_directory = 'WaleedWajdan/Sprint3/cdk.out')
         
         pipeline = pipelines_.CodePipeline(self, 'WaleedWajdanSprint3PipelineStackShellStepPipelineID', synth = synth)
+
+        betaTesting = WaleedWajdanSprint3Stage(self, "WajdanBetaStage")
+        prod = WaleedWajdanSprint3Stage(self, "WajdanProdStage")
+
+        pipeline.add_stage(betaTesting)
+        pipeline.add_stage(prod)
