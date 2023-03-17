@@ -15,7 +15,7 @@ from aws_cdk import (
 from constructs import Construct
 from resources import constants as constants
 
-crontim = 20
+crontim = 60
 
 class Sprint3Stack(Stack):
     # Crontim in seconds
