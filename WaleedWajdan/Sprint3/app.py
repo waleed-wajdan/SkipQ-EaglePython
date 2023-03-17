@@ -3,11 +3,15 @@ import os
 
 import aws_cdk as cdk
 
-from sprint3.sprint3_stack import Sprint3Stack
+from sprint3.WaleedWajdanPipelineStack import WaleedWajdanPipelineStack
 
 
 app = cdk.App()
-Sprint3Stack(app, "Sprint3Stack",
+cdk.Tags.of(app).add("cohort","Eagle")
+cdk.Tags.of(app).add("name","WaleedWajdan")
+
+
+WaleedWajdanPipelineStack(app, "WaleedWajdanPipelineStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
@@ -20,7 +24,7 @@ Sprint3Stack(app, "Sprint3Stack",
     # Uncomment the next line if you know exactly what Account and Region you
     # want to deploy the stack to. */
 
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
+    env=cdk.Environment(account='315997497220', region='us-east-2'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
     )
