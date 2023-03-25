@@ -6,7 +6,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-from sprint4.WaleedWajdanStage import WaleedWajdanSprint4Stage
+from Sprint4.sprint4.WaleedWajdanStage import WaleedWajdanSprint4Stage
 
 class WaleedWajdanPipelineStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -29,5 +29,16 @@ class WaleedWajdanPipelineStack(Stack):
         betaTesting = WaleedWajdanSprint4Stage(self, "WajdanBetaStage")
         prod = WaleedWajdanSprint4Stage(self, "WajdanProdStage")
 
-        pipeline.add_stage(betaTesting)
-        pipeline.add_stage(prod)
+        pipeline.add_stage(betaTesting, pre = [
+
+                                    pipelines_.ShellStep('WaleedWajdanPipelineStackShellStepSynthID', 
+                                    input = source,                        
+                                    commands = ['cd WaleedWajdan/Sprint4/',
+                                    'npm install -g aws-cdk',
+                                    'pip install -r requirements.txt',
+                                    'pip install -r requirements-dev.txt',
+                                    'cdk synth',
+                                    "pytest"],
+                                    primary_output_directory = 'WaleedWajdan/Sprint4/cdk.out')
+        ])
+        pipeline.add_stage(prod, pre = [pipelines_.ManualApprovalStep("PromotetoProd")])

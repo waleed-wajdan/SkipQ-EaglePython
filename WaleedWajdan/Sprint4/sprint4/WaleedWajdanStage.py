@@ -4,7 +4,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-from sprint4.sprint4_stack import Sprint4Stack
+from Sprint4.sprint4.sprint4_stack import Sprint4Stack
 
 class WaleedWajdanSprint4Stage(Stage):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:

@@ -13,7 +13,7 @@ from aws_cdk import (
     aws_dynamodb as db_,
 )
 from constructs import Construct
-from resources import constants as constants
+from Sprint4.resources import constants as constants
 
 crontim = 60
 
