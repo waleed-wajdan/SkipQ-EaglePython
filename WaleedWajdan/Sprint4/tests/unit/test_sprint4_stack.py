@@ -34,11 +34,11 @@ def test_create_lambda():
 
     # create lambda function
     lambda_rolet = stack.create_lambda_role()
-    lambda_function = stack.create_lambda("TestLambda", "./resources", "test_lambda.handler", lambda_rolet)
+    lambda_function = stack.create_lambda("TestLambda", "./resources", "testfun.lambda_handler", lambda_rolet)
 
     # assert function properties
     assert lambda_function.function_name == "TestLambda"
-    assert lambda_function.handler == "test_lambda.handler"
+    assert lambda_function.handler == "testfun.lambda_handler"
     assert lambda_function.role == lambda_rolet
     assert lambda_function.runtime == lambda_.Runtime.PYTHON_3_9
 
