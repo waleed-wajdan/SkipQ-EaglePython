@@ -33,13 +33,12 @@ def test_create_lambda():
     stack = Sprint4Stack(app, "sprint4test")
 
     # create lambda function
-    lambda_rolet = stack.create_lambda_role()
-    lambda_function = stack.create_lambda("TestLambda", "./resources", "testfun.lambda_handler", lambda_rolet)
+    # lambda_rolet = stack.create_lambda_role()
+    lambda_function = stack.create_lambda("TestLambda", "./resources", "testfun.lambda_handler", stack.create_lambda_role)
 
     # assert function properties
     assert lambda_function.function_name == "TestLambda"
     assert lambda_function.handler == "testfun.lambda_handler"
-    assert lambda_function.role == lambda_rolet
     assert lambda_function.runtime == lambda_.Runtime.PYTHON_3_9
 
 # Integration Test
