@@ -64,7 +64,7 @@ class Sprint4Stack(Stack):
                             # application=application,
                             alarms = [duration_alarm,invocation_alarm],
                             alias=alias,
-                            auto_rollback = codedeploy_.AutoRollbackConfig(deployment_in_alarm=True),
+                            # auto_rollback = codedeploy_.AutoRollbackConfig(deployment_in_alarm=True),
                             deployment_config=codedeploy_.LambdaDeploymentConfig.LINEAR_10_PERCENT_EVERY_1_MINUTE
                         )
 
