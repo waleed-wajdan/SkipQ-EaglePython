@@ -6,7 +6,7 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-from Sprint4.sprint4.WaleedWajdanStage import WaleedWajdanSprint4Stage
+from sprint4.WaleedWajdanStage import WaleedWajdanSprint4Stage
 
 class WaleedWajdanPipelineStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -35,6 +35,7 @@ class WaleedWajdanPipelineStack(Stack):
                                     input = source,                        
                                     commands = ['cd WaleedWajdan/Sprint4/',
                                     'npm install -g aws-cdk',
+                                    'pip install boto3',
                                     'pip install -r requirements.txt',
                                     'pip install -r requirements-dev.txt',
                                     'cdk synth',

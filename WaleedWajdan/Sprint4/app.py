@@ -3,7 +3,7 @@ import os
 
 import aws_cdk as cdk
 
-from Sprint4.sprint4.WaleedWajdanPipelineStack import WaleedWajdanPipelineStack
+from sprint4.WaleedWajdanPipelineStack import WaleedWajdanPipelineStack
 
 
 app = cdk.App()
