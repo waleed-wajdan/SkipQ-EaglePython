@@ -33,14 +33,14 @@ class Sprint4Stack(Stack):
 
         duration_alarm = cw_.Alarm(self, "Duration_Metric_Errors",
                 comparison_operator=cw_.ComparisonOperator.GREATER_THAN_THRESHOLD,
-                threshold=20000,
+                threshold=200000,
                 evaluation_periods= 60,
                 metric= duration_metric
                 )
         
         invocation_alarm = cw_.Alarm(self, "Invocation_Metric_Errors",
                 comparison_operator=cw_.ComparisonOperator.GREATER_THAN_THRESHOLD,
-                threshold=2,
+                threshold=5,
                 evaluation_periods= 60,
                 metric= invocation_metric
                 )
