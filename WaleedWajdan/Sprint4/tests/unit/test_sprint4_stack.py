@@ -13,7 +13,7 @@ from resources import WHApp
 def stack():
     app = core.App()
     stack = Sprint4Stack(app, "sprint4test")
-    yield stack
+    return stack
     app.synth()
 
 @pytest.fixture
