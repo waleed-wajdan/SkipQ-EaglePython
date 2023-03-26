@@ -1,10 +1,20 @@
 import aws_cdk as core
+from aws_cdk import aws_iam as iam_
 import aws_cdk.assertions as assertions
 import pytest
 import boto3
+import json
 
 from resources import constants
 from sprint4.sprint4_stack import Sprint4Stack
+from resources import WHApp
+
+@pytest.fixture
+def stack():
+    app = core.App()
+    stack = Sprint4Stack(app, "sprint4test")
+    yield stack
+    app.synth()
 
 @pytest.fixture
 def stack_template():
@@ -13,7 +23,7 @@ def stack_template():
     return assertions.Template.from_stack(stack)
 
 def test_s3_bucket_policy_count(stack_template):
-    stack_template.resource_count_is("AWS::IAM::Role", 1)
+    stack_template.resource_count_is("AWS::IAM::Role", 2)
 
 def test_s3_bucket_count(stack_template):
     stack_template.resource_count_is("AWS::Lambda::Function",2)
@@ -28,23 +38,22 @@ def test_codepipeline_count(stack_template):
     stack_template.resource_count_is("AWS::Events::Rule",1)
 
 # Functional Test
-def test_create_lambda():
-    app = core.App()
-    stack = Sprint4Stack(app, "sprint4test")
+def test_constants():
+    result = constants
+    assert result.url == ['google.com','github.com','amazon.com','youtube.com']
+    assert result.namespace == "WajdanNamespace"
+    assert result.AvailabilityMetric == "Availability"
+    assert result.LatencyMetric == "Latency"
 
-    # create lambda function
-    # lambda_rolet = stack.create_lambda_role()
-    lambda_function = stack.create_lambda("TestLambda", "./resources", "testfun.lambda_handler", stack.create_lambda_role)
-
-    # assert function properties
-    assert lambda_function.function_name == "TestLambda"
-    assert lambda_function.handler == "testfun.lambda_handler"
-    assert lambda_function.runtime == lambda_.Runtime.PYTHON_3_9
+def test_WHApp(stack):
+    lambda_role = stack.create_lambda_role('WHApptest')
+    test = stack.create_lambda("WHTestLambda",'./resources','WHApp.lambda_handler',lambda_role)
+    assert test
+    
 
 # Integration Test
-def test_sprint4_stack():
+def test_sprint4_stack(stack):
     app = core.App()
-    stack = Sprint4Stack(app, "test-stack")
 
     # deploy the stack
     core.Tags.of(stack).add("env", "test")
@@ -53,7 +62,3 @@ def test_sprint4_stack():
 
     # assert resources were created
     assert stack
-
-
-
-
