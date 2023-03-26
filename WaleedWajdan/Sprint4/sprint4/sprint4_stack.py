@@ -117,7 +117,7 @@ class Sprint4Stack(Stack):
 
 
     def create_lambda(self,id,asset,handler,role):
-        return lambda_.Function(self, id = id, handler = handler, code = lambda_.Code.from_asset(asset), runtime = lambda_.Runtime.PYTHON_3_9,role = role)
+        return lambda_.Function(self, id = id, handler = handler, code = lambda_.Code.from_asset(asset), runtime = lambda_.Runtime.PYTHON_3_9,role = role,timeout=Duration.minutes(5))
     
     def create_lambda_role(self,uniqname):
         lambdaRole = iam_.Role(self,"Lambda_Role"+uniqname,
