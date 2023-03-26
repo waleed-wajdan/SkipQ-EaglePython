@@ -37,7 +37,7 @@ def cfn_stack():
     stack_name = "Sprint4StackFunctionalTest"
     app = core.App()
     Sprint4Stack(app, stack_name)
-    return boto3.resource("cloudformation").Stack(stack_name)
+    return boto3.resource("cloudformation", region_name = 'us-east-2').Stack(stack_name)
 
 def test_cloudwatch_alarms(cfn_stack):
     """Verify that CloudWatch alarms are created for each URL."""
