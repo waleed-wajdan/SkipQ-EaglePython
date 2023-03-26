@@ -26,13 +26,7 @@ class Sprint4Stack(Stack):
         lambda_role = self.create_lambda_role('sprint4_stackpy')
         fn = self.create_lambda("WHLambda",'./resources','WHApp.lambda_handler',lambda_role)
         dbLambda = self.create_lambda("DBLambda",'./resources','DBApp.lambda_handler',lambda_role)
-        target = target_.LambdaFunction(handler=fn)
-        rule = events_.Rule(self, "WHAppRule",
-        schedule = events_.Schedule.rate(Duration.minutes(crontim)),
-        targets = [target]
-        )
-        fn.apply_removal_policy(RemovalPolicy.DESTROY)
-        rule.apply_removal_policy(RemovalPolicy.DESTROY)
+       
 
         duration_metric = fn.metric_duration()
         invocation_metric = fn.metric_invocations()
@@ -68,6 +62,13 @@ class Sprint4Stack(Stack):
                             deployment_config=codedeploy_.LambdaDeploymentConfig.LINEAR_10_PERCENT_EVERY_1_MINUTE
                         )
 
+        target = target_.LambdaFunction(handler=fn)
+        rule = events_.Rule(self, "WHAppRule",
+        schedule = events_.Schedule.rate(Duration.minutes(crontim)),
+        targets = [target]
+        )
+        fn.apply_removal_policy(RemovalPolicy.DESTROY)
+        rule.apply_removal_policy(RemovalPolicy.DESTROY)
 
 
         topic = sns_.Topic(self,"WHNotifications")
