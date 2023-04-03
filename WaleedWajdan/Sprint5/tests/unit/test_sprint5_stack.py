@@ -23,13 +23,13 @@ def stack_template():
     return assertions.Template.from_stack(stack)
 
 def test_s3_bucket_policy_count(stack_template):
-    stack_template.resource_count_is("AWS::IAM::Role", 2)
+    stack_template.resource_count_is("AWS::IAM::Role", 3)
 
 def test_s3_bucket_count(stack_template):
-    stack_template.resource_count_is("AWS::Lambda::Function",2)
+    stack_template.resource_count_is("AWS::Lambda::Function",3)
 
 def test_iam_role_count(stack_template):
-    stack_template.resource_count_is("AWS::Lambda::Permission",2)
+    stack_template.resource_count_is("AWS::Lambda::Permission",11)
 
 def test_iam_policy_count(stack_template):
     stack_template.resource_count_is("AWS::SNS::Subscription",2)
