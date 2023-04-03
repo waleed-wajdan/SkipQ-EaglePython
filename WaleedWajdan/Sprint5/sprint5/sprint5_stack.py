@@ -123,7 +123,7 @@ class Sprint5Stack(Stack):
         fn.add_environment('URL', APITable.table_name)
         APILambda.grant_invoke(iam_.ServicePrincipal("apigateway.amazonaws.com"))
 
-        api = apigateway_.LambdaRestAPI(self, "WaleedWajdanAPI",
+        api = apigateway_.LambdaRestApi(self, "WaleedWajdanAPI",
                                         handler=APILambda,
                                         proxy=False,
                                         endpoint_configuration=apigateway_.EndpointConfiguration(

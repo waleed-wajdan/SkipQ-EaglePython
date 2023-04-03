@@ -37,6 +37,9 @@ def test_iam_policy_count(stack_template):
 def test_codepipeline_count(stack_template):
     stack_template.resource_count_is("AWS::Events::Rule",1)
 
+def test_RestAPI(fixtures):
+    fixtures.resource_count_is("AWS::ApiGateway::RestApi", 1)
+
 # Functional Test
 def test_constants():
     result = constants
