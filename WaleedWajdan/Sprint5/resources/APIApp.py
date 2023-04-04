@@ -26,7 +26,7 @@ def lambda_handler(event, context):
     # Delete Method
     # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Table.delete_item
     elif method == 'DELETE':
-        link_id = json.loads(body)['linkId']
+        link_id = json.loads(body)["linkId"]
         response = table.delete_item(Key={"linkId": str(link_id)})
         if response:
             return json_response({"message": "Url deleted"})
@@ -37,7 +37,7 @@ def lambda_handler(event, context):
     # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Table.put_item
     elif method == 'POST':
         link_id = json.loads(body)["linkId"]
-        url = json.loads(body)['URL']
+        url = json.loads(body)["URL"]
         key = {
             "linkId": str(link_id),
             "URL": url
@@ -57,8 +57,8 @@ def lambda_handler(event, context):
     # Put Method
     # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Table.update_item
     elif method == 'PUT':
-        link_id = json.loads(body)['linkId']
-        url = json.loads(body)['URL']
+        link_id = json.loads(body)["linkId"]
+        url = json.loads(body)["URL"]
         response = table.update_item(
                     Key={"linkId": str(link_id)},
                     UpdateExpression = 'SET #u=:url',
