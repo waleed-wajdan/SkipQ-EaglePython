@@ -36,7 +36,7 @@ def lambda_handler(event, context):
     # Post Method
     # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB.Table.put_item
     elif method == 'POST':
-        link_id = json.loads(body)['linkId']
+        link_id = json.loads(body)["linkId"]
         url = json.loads(body)['URL']
         key = {
             "linkId": str(link_id),
