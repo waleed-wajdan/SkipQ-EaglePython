@@ -1,58 +1,55 @@
+# Welcome to AWS Design Day 3!
 
-# Welcome to your CDK Python project!
 
-This is a blank project for CDK development with Python.
+## Table of Contents
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+- [Task 1](#task-1)
+- [Task 2](#task-2)
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
 
-To manually create a virtualenv on MacOS and Linux:
+## Task 1
+#### Question 1:
+<b> How would you automate deployment (e-g on AWS) for a system that has source code in a repo.? </b>
 
-```
-$ python3 -m venv .venv
-```
+The deployment can be automated by using a repo-change based approach. We can utilize a CI/CD pipeline. The pipeline has following stages:
+- <b> Source stage: </b> When code is pushed into the repo, the CI/CD pipeline is triggered. Every time we change the repo with a changed/new code, the execution process starts again.
+- <b> Build/Test Stage: </b> Code is built and synthesized in this stage. We can set up stages for testing.
+- <b> Deploy Stage: </b> If the tests are passed successfully, then the code is deployed.
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
 
-```
-$ source .venv/bin/activate
-```
+#### Question 2:
+<b> How do we generate an artifact from the repo that gets published and later is used in some services.? </b>
+- An artifact is generated using CodeBuild within the pipeline. 
+- The artifacts are stored in a S3 bucket.
+- Artifacts can be shared using a unique URL that allows external and internal usage of the artifact.
 
-If you are a Windows platform, you would activate the virtualenv like this:
 
-```
-% .venv\Scripts\activate.bat
-```
+#### Question 3: 
+<b> Are there more than one solutions? </b>
 
-Once the virtualenv is activated, you can install the required dependencies.
+We can utilize multiple methods to achieve almost anything generating the same result when working with AWS. For example, we could directly download the artifacts from the AWS console.
 
-```
-$ pip install -r requirements.txt
-```
+## Task 2
+Deploy, maintain and rollback pipeline for an artifact deployment e-g lambda package, docker image etc.
 
-At this point you can now synthesize the CloudFormation template for this code.
+![Rollback](https://user-images.githubusercontent.com/121339168/234926442-11dd865d-af16-4768-8821-9f252cefd05e.png)
 
-```
-$ cdk synth
-```
+#### Question 1:
+<b> If the latest deployment is failing, why do you think that is.? </b>
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+Some possible reasons are:
+- Not assigning necessary AWS roles.
+- Pipeline does not have access to the repository.
+- Maybe some items have expired that were available for the last run.
+- There is a internal conflict that can only be resolved by deleting the stack and redeploying..
 
-## Useful commands
+#### Question 2:
+<b> How will you rollback.? </b>
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+We can rollback using version control and having stages in the pipeline. We can make tests that our code needs to pass to get to the deployment stage. We can also keep a record of say the last 3 versions that we can deploy instead to get back to a previous state.
 
-Enjoy!
+
+#### Question 3:
+<b> How do you reduce such failures so there is less need to rollback.? </b>
+
+We can reduce such failures by having multiple stages with different tasks/tests and making the code modular. Additionally we can make the deployment limited to specific users for testing instead of having to rollback for the entire userbase if an issue comes up.
