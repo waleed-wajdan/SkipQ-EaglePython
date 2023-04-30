@@ -30,3 +30,13 @@
 - <b> Rest API to get pre-signed url for uploading the file </b>
 
 
+![image](https://user-images.githubusercontent.com/121339168/235378528-5dc76886-efdf-4edc-a10c-d956e9ad623a.png)
+
+
+
+- <b> Item in S3 Bucket </b>
+
+
+![image](https://user-images.githubusercontent.com/121339168/235378499-8c7439cc-f1e2-4033-a913-d8265d9868c0.png)
+
+
