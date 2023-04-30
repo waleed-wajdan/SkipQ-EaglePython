@@ -31,10 +31,10 @@
 
 
 File content is "Hello World Hello Audience Hello Reader Bingo Bingo Bingo"
-Output is: word and its occurence
 
 
 
+![image](https://user-images.githubusercontent.com/121339168/235374359-ac228a09-a57c-4fba-9d8f-76a924f24294.png)
 
 
 
@@ -44,6 +44,7 @@ Output is: word and its occurence
 
 
 
+![image](https://user-images.githubusercontent.com/121339168/235374375-4b368b36-59b9-4fd9-9bab-c00bb3ae0896.png)
 
 
 
@@ -53,6 +54,7 @@ Output is: word and its occurence
 
 
 
+![image](https://user-images.githubusercontent.com/121339168/235374381-7c889858-4fab-4a37-9df9-8a16bfec6089.png)
 
 
 
@@ -60,6 +62,7 @@ Output is: word and its occurence
 - <b> Email notification after output file is uploaded to bucket </b>
 
 
+![image](https://user-images.githubusercontent.com/121339168/235374292-8ab3ba3a-e397-4747-a158-42f3b209cc82.png)
 
 
 
