@@ -1,58 +1,39 @@
+# Welcome to AWS Design Day 6 !
 
-# Welcome to your CDK Python project!
 
-This is a blank project for CDK development with Python.
+## Table of Contents
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+- [Task](#task)
+- [Design](#design)
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
 
-To manually create a virtualenv on MacOS and Linux:
+## Task
 
-```
-$ python3 -m venv .venv
-```
+<b> Design </b> Client needs a Notification System – that notifies the Admins about report summaries, users about operations within the system, and notifies clients/users about any changes. What AWS service(s) would you use for such a system?
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
 
-```
-$ source .venv/bin/activate
-```
 
-If you are a Windows platform, you would activate the virtualenv like this:
+## Design
 
-```
-% .venv\Scripts\activate.bat
-```
+![image](https://user-images.githubusercontent.com/121339168/235376429-57e5dc14-68a1-41b8-9584-c6cb4a377c93.png)
 
-Once the virtualenv is activated, you can install the required dependencies.
+## Demo
 
-```
-$ pip install -r requirements.txt
-```
+- <b> Lambda Cloud Watch Logs for Admin </b>
 
-At this point you can now synthesize the CloudFormation template for this code.
+![image](https://user-images.githubusercontent.com/121339168/235377150-f0df106c-7829-48e7-abdd-33595c8a9571.png)
 
-```
-$ cdk synth
-```
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+- <b> Email Notification after successful upload in output bucket for Users </b>
 
-## Useful commands
+![image](https://user-images.githubusercontent.com/121339168/235376945-a8a271fb-5ba9-4e2b-878e-c1782fdc60ee.png)
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
 
-Enjoy!
+- <b> API POST Trigger by associating Lambda with the API </b>
+
+![image](https://user-images.githubusercontent.com/121339168/235376933-e124a444-9d7c-401b-a143-fb1930f2ba4d.png)
+
+
+- <b> Email notification to inform Admin about activity in the API Gateway and associated logs </b>
+
+![image](https://user-images.githubusercontent.com/121339168/235376918-9c91aec7-3465-42cd-a793-a55d36be666f.png)
