@@ -19,3 +19,4 @@ Design an end-to-end CI/CD delivery pipeline for a website on AWS that has follo
 
 ## Design
 
+![Design4SubmitImg](https://user-images.githubusercontent.com/121339168/235365086-8878f871-8275-4ffc-a6f8-d3c783454bef.jpg)
