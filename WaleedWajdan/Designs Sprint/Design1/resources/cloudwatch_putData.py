@@ -22,7 +22,7 @@ class AWSCloudWatch:
         self.client.put_metric_alarm(
             AlarmName = "WajdanDesign1Alarm",
             ComparisonOperator = "GreaterThanThreshold",
-            EvaluationPeriods = 60,
+            EvaluationPeriods = 1,
             MetricName = metric_name,
             Namespace = namespace,
             Period = 60,
@@ -30,5 +30,5 @@ class AWSCloudWatch:
             Threshold = 10,
             Dimensions = dimensions,
             ActionsEnabled = True,
-            AlarmActions = [self.sns_arn]
+            AlarmActions = [self.sns_arn,]
         )
