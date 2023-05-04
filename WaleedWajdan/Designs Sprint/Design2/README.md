@@ -1,58 +1,44 @@
+# Welcome to AWS Design Day 2 Python project!
 
-# Welcome to your CDK Python project!
 
-This is a blank project for CDK development with Python.
+[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-3810/)
+[![AWS cdk 2.51.1](https://img.shields.io/badge/aws_cdk_lib-2.51.1-yellow.svg)](https://pypi.org/project/aws-cdk-lib/2.51.1/)
+[![Constructs 10.1.165](https://img.shields.io/badge/constructs-10.1.165-red.svg)](https://pypi.org/project/constructs/10.1.165/)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
 
-To manually create a virtualenv on MacOS and Linux:
+## Table of Contents
 
-```
-$ python3 -m venv .venv
-```
+- [Task](#task)
+- [Design](#design)
+- [Installation](#installation)
+- [Demo](#demo)
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
 
-```
-$ source .venv/bin/activate
-```
+## Task
 
-If you are a Windows platform, you would activate the virtualenv like this:
+Consider that you are getting events in the format [{"event1":{"attr1": value }}] from different APIs.
+* How will you parse the event to get the value?
+* How will you return 10 latest events when required?
 
-```
-% .venv\Scripts\activate.bat
-```
 
-Once the virtualenv is activated, you can install the required dependencies.
+## Design
 
-```
-$ pip install -r requirements.txt
-```
 
-At this point you can now synthesize the CloudFormation template for this code.
+## Demo
 
-```
-$ cdk synth
-```
+- <b> API POST Request </b>
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
+![image](https://user-images.githubusercontent.com/121339168/235370565-c22de830-9111-4614-87a8-348b09041032.png)
 
-## Useful commands
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+- <b> API GET Request </b>
 
-Enjoy!
+![image](https://user-images.githubusercontent.com/121339168/235370572-a4a9006e-5139-43bd-a795-a1606117b2e0.png)
+
+
+- <b> Dynamo DB table </b>
+
+![image](https://user-images.githubusercontent.com/121339168/235370609-d0d1a644-a779-42b1-86dd-acedb3acfdb5.png)
+
+
