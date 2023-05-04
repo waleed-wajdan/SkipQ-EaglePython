@@ -27,7 +27,21 @@ Design the above architecture in draw.io
 
 ## Design
 
+### Basic outlook of a microservices based app
+
 ![image](https://user-images.githubusercontent.com/121339168/235538140-d5481f6e-00b7-4ce9-9f9a-faa99b420482.png)
 
 
-![image](https://user-images.githubusercontent.com/121339168/235538384-04bd5e28-4629-4e51-9b2e-418ab8c4acad.png)
+### Operation of the Monolithic Application
+
+![image](https://user-images.githubusercontent.com/121339168/236127031-8bf35a33-38bb-4bd6-92bd-33ab6d2ba256.png)
+
+
+### Containerization of the Monolith into its different services i.e. microservices architecture
+
+![image](https://user-images.githubusercontent.com/121339168/236127314-ff4fdfeb-7de8-4e15-9bc5-6a2e1f908a45.png)
+
+
+### Our monolithic application migrated to microservices
+
+![image](https://user-images.githubusercontent.com/121339168/236127465-51161727-fbc4-4975-a499-f3bcf12c7d06.png)
