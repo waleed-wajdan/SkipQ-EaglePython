@@ -12,10 +12,5 @@ In this sprint, I have done following tasks:
 * Create pipelines
 * Add beta and prod stages to the pipeline
 * Deploy the pipeline
-* Write 5 unit tests
-* Write functional test
-* Add unit test step in the beta stage
-* Add manual approval step before the prod stage
 * Create two metrics (duration and errors) for lambda web health
 * Create alarms on those metrics
-* Configure auto rollback if any of the metrics are in alarm
